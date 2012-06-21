@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load url from future %}
 
 {# An example chat window #}
 
@@ -9,7 +10,7 @@
 <script type="text/javascript" src="/static/jqchat/jqchat.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		InitChatWindow("{% url jqchat_test_window_with_description_ajax room.id %}", HandleRoomDescription);
+		InitChatWindow("{% url 'jqchat_test_window_with_description_ajax' room.id %}", HandleRoomDescription);
 		// Initialise the custom code to POST new descriptions.
 		InitChatDescription();
 	});
@@ -40,10 +41,10 @@
 	of the chat client messages. Likewise, updates to the <em>room description</em>
 	elsewhere are piggybacked on to the ajax messages received from the server.</p>
 	<p>For the basic client,
-	<a href="{% url jqchat_test_window room.id %}">see here</a>.</p>
+	<a href="{% url 'jqchat_test_window' room.id %}">see here</a>.</p>
 	<p>There are 2 rooms in this demo,
-	<a href="{% url jqchat_test_window 1 %}">here</a> and 
-	<a href="{% url jqchat_test_window 2 %}">here</a>.</p>
+	<a href="{% url 'jqchat_test_window' 1 %}">here</a> and 
+	<a href="{% url 'jqchat_test_window' 2 %}">here</a>.</p>
 </div>
 
 <h2>Room name: {{ room }}</h2>
